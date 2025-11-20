@@ -18,7 +18,7 @@ export const registerUser = async(req,res)=>{
         }
         //Encriptar la contrasena
         const hashedPassword = await bcrypt.hash(password,10)
-        console.log(hashedPassword)
+        
         
         const isFirsUser = (await UserModel.countDocuments())===0
         //crear y guardar user en la bd
@@ -28,7 +28,7 @@ export const registerUser = async(req,res)=>{
             password:hashedPassword,
             isAdmin:isFirsUser,
         })
-            console.log(newUser)
+            
 
         //Generar un  jwt
         //payload
@@ -55,9 +55,9 @@ export const registerUser = async(req,res)=>{
 // get profile user
 export const profile = async(req,res)=>{
     // extract access token send client
-    console.log('req.cookies',req.cookies)
+   
     const token = req.cookies.accesToken;
-    console.log('token',token)
+   
     try {
         const decoded = jwt.verify(token,process.env.JWT_SECRET);
         const user = await UserModel.findById(decoded.userId);
