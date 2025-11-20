@@ -1,4 +1,4 @@
-import mongoose, { connect } from "mongoose";
+import  { connect } from "mongoose";
 
 export const conectDB = async () => {
     try {
@@ -14,12 +14,4 @@ export const conectDB = async () => {
     
     }
 
-    export const disconnectDB = async () => {
-        try {
-            await mongoose.disconnect();    
-            
-        } catch (error) {
-           
-        }
-    };
-
+  
